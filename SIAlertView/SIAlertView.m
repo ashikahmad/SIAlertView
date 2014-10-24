@@ -10,6 +10,7 @@
 #import "UIWindow+SIUtils.h"
 #import <QuartzCore/QuartzCore.h>
 
+NSString *const SIAlertViewDidSetupNotification = @"SIAlertViewDidSetupNotification";
 NSString *const SIAlertViewWillShowNotification = @"SIAlertViewWillShowNotification";
 NSString *const SIAlertViewDidShowNotification = @"SIAlertViewDidShowNotification";
 NSString *const SIAlertViewWillDismissNotification = @"SIAlertViewWillDismissNotification";
@@ -879,6 +880,11 @@ static SIAlertView *__si_alert_current_view;
     [self updateMessageLabel];
     [self setupButtons];
     [self invalidateLayout];
+    
+    if (self.didSetupHandler) {
+        self.didSetupHandler(self);
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:SIAlertViewDidSetupNotification object:self userInfo:nil];
 }
 
 - (void)teardown

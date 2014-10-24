@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString *const SIAlertViewDidSetupNotification;
 extern NSString *const SIAlertViewWillShowNotification;
 extern NSString *const SIAlertViewDidShowNotification;
 extern NSString *const SIAlertViewWillDismissNotification;
@@ -49,6 +50,7 @@ typedef void(^SIAlertViewHandler)(SIAlertView *alertView);
 @property (nonatomic, assign) SIAlertViewBackgroundStyle backgroundStyle; // default is SIAlertViewBackgroundStyleGradient
 @property (nonatomic, assign) SIAlertViewButtonsListStyle buttonsListStyle; // default is SIAlertViewButtonsListStyleNormal
 
+@property (nonatomic, copy) SIAlertViewHandler didSetupHandler;
 @property (nonatomic, copy) SIAlertViewHandler willShowHandler;
 @property (nonatomic, copy) SIAlertViewHandler didShowHandler;
 @property (nonatomic, copy) SIAlertViewHandler willDismissHandler;
